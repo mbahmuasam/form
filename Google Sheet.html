@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Clients Review UI </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="review.css">
+<body>
+
+    <!-- Image Slider Section -->
+<br>
+   <link rel="stylesheet" href="Google Sheet.css">
+</head>
+<body>
+	<div class="container">
+		<form method="post" action="https://script.google.com/macros/s/AKfycbzSaBP0-3vGhTN9dih1L5ofmwOQJQWsiODQeUfkmwrXtVuGnaL37O7uHDz4ewF7rr0l/exec" name="contact-form">
+			<br><h4>Our Happy Clients</h4>
+        <br><p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, atque? Repudiandae possimus asperiores hic nemo id a molestiae minus impedit!</p><br>
+			<input type="text" name="your-name" placeholder="Name">
+			<input type="text" name="your-number" placeholder="Number">
+			<input type="email" name="your-email" placeholder="Email">
+			<textarea name="message" rows="7" placeholder="Your Message"></textarea>
+			<center><input type="submit" value="Submit" id="submit">
+		</form>
+	</div>
+
+	<script src="Google Sheet.js"></script>
+            </div>
+        </div>
+    </div>
+    <!-- Clients Review Section -->
+    <div class="review-container">
+        <br><br><h2>Our Happy Clients</h2>
+        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, atque? Repudiandae possimus asperiores hic nemo id a molestiae minus impedit!</p>
+
+        <div class="reviewSection">
+            <div class="reviewItem">
+                <div class="top">
+                    <div class="clientImage">
+                        <img src="https://example.com/client1.jpg" alt="Client 1">
+                        <span>Raju Sheoran</span>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="far fa-star"></i></li>
+                        <li><i class="far fa-star"></i></li>
+                    </ul>
+                </div>
+                <article>
+                    <p class="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit beatae ipsa voluptatibus perferendis quos eaque nemo error tempora harum quas, laudantium tenetur, neque, facere exercitationem!</p>
+                    <p>Jan 01, 2023</p>
+                </article>
+            </div>
+
+            <div class="reviewItem">
+                <div class="top">
+                    <div class="clientImage">
+                        <img src="https://example.com/client2.jpg" alt="Client 2">
+                        <span>John Doe</span>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="far fa-star"></i></li>
+                    </ul>
+                </div>
+                <article>
+                    <p class="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit beatae ipsa voluptatibus perferendis quos eaque nemo error tempora harum quas, laudantium tenetur, neque, facere exercitationem!</p>
+                    <p>Feb 15, 2023</p>
+                </article>
+            </div>
+
+            <div class="reviewItem">
+                <div class="top">
+                    <div class="clientImage">
+                        <img src="https://example.com/client3.jpg" alt="Client 3">
+                        <span>Jane Smith</span>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                    </ul>
+                </div>
+                <article>
+                    <p class="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit beatae ipsa voluptatibus perferendis quos eaque nemo error tempora harum quas, laudantium tenetur, neque, facere exercitationem!</p>
+                    <p>Mar 30, 2023</p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const initSlider = () => {
+            const imageList = document.querySelector(".slider-wrapper .image-list");
+            const slideButtons = document.querySelectorAll(".slider-wrapper .slide-button");
+            const sliderScrollbar = document.querySelector(".slider-scrollbar");
+            const scrollbarThumb = document.querySelector(".slider-scrollbar .scrollbar-thumb");
+            const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
+
+            // Handle scrollbar thumb drag
+            scrollbarThumb.addEventListener("mousedown", (e) => {
+                const startX = e.clientX;
+                const thumbPosition = scrollbarThumb.offsetLeft;
+                const maxThumbPosition = sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth;
+
+                // Update thumb position on mouse move
+                const handleMouseMove = (e) => {
+                    const deltaX = e.clientX - startX;
+                    const newThumbPosition = thumbPosition + deltaX;
+
+                    // Ensure the scrollbar thumb stays within bounds
+                    const boundedPosition = Math.max(0, Math.min(maxThumbPosition, newThumbPosition));
+                    const scrollPosition = (boundedPosition / maxThumbPosition) * maxScrollLeft;
+
+                    scrollbarThumb.style.left = `${boundedPosition}px`;
+                    imageList.scrollLeft = scrollPosition;
+                }
+
+                // Remove event listeners on mouse up
+                const handleMouseUp = () => {
+                    document.removeEventListener("mousemove", handleMouseMove);
+                    document.removeEventListener("mouseup", handleMouseUp);
+                }
+
+                // Add event listeners for drag interaction
+                document.addEventListener("mousemove", handleMouseMove);
+                document.addEventListener("mouseup", handleMouseUp);
+            });
+
+            // Slide images according to the slide button clicks
+            slideButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const direction = button.id === "prev-slide" ? -1 : 1;
+                    const scrollAmount = imageList.clientWidth * direction;
+                    imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+                });
+            });
+
+            // Show or hide slide buttons based on scroll position
+            const handleSlideButtons = () => {
+                slideButtons[0].style.display = imageList.scrollLeft <= 0 ? "none" : "flex";
+                slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? "none" : "flex";
+            }
+
+            // Update scrollbar thumb position based on image scroll
+            const updateScrollThumbPosition = () => {
+                const scrollPosition = imageList.scrollLeft;
+                const thumbPosition = (scrollPosition / maxScrollLeft) * (sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth);
+                scrollbarThumb.style.left = `${thumbPosition}px`;
+            }
+
+            // Call these two functions when image list scrolls
+            imageList.addEventListener("scroll", () => {
+                updateScrollThumbPosition();
+                handleSlideButtons();
+            });
+        }
+
+        window.addEventListener("resize", initSlider);
+        window.addEventListener("load", initSlider);
+    </script>
+</body>
+</html>

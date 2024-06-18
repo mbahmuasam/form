@@ -1,0 +1,291 @@
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: 'poppins', sans-serif;
+	font-size: 18px;
+}
+body{
+	display: flex;
+	justify-content: center;
+}
+.container{
+	width: 500px;
+	padding: 30px;
+	border: 1px solid #eeeeee;
+	border-radius: 10px;
+	background-color: #f7f4ed;
+}
+h4{
+	margin-bottom: 10px;
+	font-size: 24px;
+	color: #333333;
+}
+input{
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+textarea{
+	width: 100%;
+	padding: 10px;
+}
+#submit{
+	border: none;
+	background-color: #a092c3;
+	color: white;
+	width: 200px;
+	margin-top: 10px;
+	border-radius: 5px;
+}
+#submit:hover{
+	background-color: #333333;
+}
+
+
+
+<style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body1 {
+            font-family: Georgia;
+            background: #EAE7F2;
+        }
+
+        .slider-container {
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+        }
+
+        .review-container {
+            width: 100%;
+            color: #333333;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #EAE7F2;
+            padding: 2rem 0;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            max-width: 1200px;
+            width: 95%;
+        }
+
+        .slider-wrapper .slide-button {
+            position: absolute;
+            top: 50%;
+            outline: none;
+            border: none;
+            height: 50px;
+            width: 50px;
+            z-index: 5;
+            color: #fff;
+            display: flex;
+            cursor: pointer;
+            font-size: 2.2rem;
+            background: #000;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .slider-wrapper .slide-button:hover {
+            background: #404040;
+        }
+
+        .slider-wrapper .slide-button#prev-slide {
+            left: -25px;
+            display: none;
+        }
+
+        .slider-wrapper .slide-button#next-slide {
+            right: -25px;
+        }
+
+        .slider-wrapper .image-list {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 18px;
+            font-size: 0;
+            list-style: none;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .slider-wrapper .image-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider-wrapper .image-list .image-item {
+            width: 325px;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .slider-scrollbar {
+            height: 24px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .slider-scrollbar .scrollbar-track {
+            background: #ccc;
+            width: 100%;
+            height: 2px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .slider-scrollbar:hover .scrollbar-track {
+            height: 4px;
+        }
+
+        .slider-scrollbar .scrollbar-thumb {
+            position: absolute;
+            background: #000;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            height: 100%;
+            cursor: grab;
+            border-radius: inherit;
+        }
+
+        .slider-scrollbar .scrollbar-thumb:active {
+            cursor: grabbing;
+            height: 8px;
+            top: -2px;
+        }
+
+        .slider-scrollbar .scrollbar-thumb::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -10px;
+            bottom: -10px;
+        }
+
+        /* Styles for mobile and tablets */
+        @media only screen and (max-width: 1023px) {
+            .slider-wrapper .slide-button {
+                display: none !important;
+            }
+
+            .slider-wrapper .image-list {
+                gap: 10px;
+                margin-bottom: 15px;
+                scroll-snap-type: x mandatory;
+            }
+
+            .slider-wrapper .image-list .image-item {
+                width: 280px;
+                height: 380px;
+            }
+
+            .slider-scrollbar .scrollbar-thumb {
+                width: 20%;
+            }
+        }
+
+        .review-container h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .review-container .description {
+            text-align: center;
+            width: 43%;
+            margin-bottom: 1rem;
+        }
+
+        .review-container .reviewSection {
+            padding: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .review-container .reviewItem {
+            padding: 10px;
+            margin: 1rem;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: #F7F4ED;
+            border: 1px solid #e7e3f2;
+            transition: all .2s linear;
+        }
+
+        .review-container .reviewItem:hover {
+            border-color: #c0a9ff;
+            transform: scale(1.01);
+            background-color: #ffffff;
+            box-shadow: 0 0px 5px 0px #cbc0c0;
+        }
+
+        .review-container .reviewItem .top {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .review-container .reviewItem .top ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .review-container .reviewItem .top ul li {
+            padding-left: 4px;
+        }
+
+        .review-container article p {
+            font-size: 15px;
+            font-weight: 100;
+            margin-bottom: 1rem;
+            font-family: system-ui;
+        }
+
+        @media screen and (max-width: 700px) {
+            .review-container .description {
+                width: 90%;
+            }
+        }
+
+        @media screen and (max-width: 375px) {
+            .review-container .reviewSection {
+                padding: 0;
+            }
+
+            .review-container .reviewItem {
+                width: 100%;
+            }
+
+            .review-container .clientImage {
+                margin-bottom: 0.6rem;
+            }
+
+            .review-container .top {
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+    </style>
